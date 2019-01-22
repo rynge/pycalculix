@@ -793,39 +793,6 @@ class ResultsFile(object):
         fzz = sum(fzz)
         return [fxx, fyy, fzz]
 
-
-    def get_maxmin_uy(self, item):
-        """Returns the maximum and minimum y-direction displacement for a given point or line.
-
-        Reports results for the current time.
-
-        Args:
-        item (Point or SignLine): item that has y-direction displacements on its nodes
-
-        Returns:
-        tuple: (uymax, uymin) max & min displacement in y-axis, displacement units
-        """
-        (uymax, uymin) = (None, None)
-        nodes_uy = []
-        nodes = item.nodes
-        #print("these nodes: ") #JB
-        #print(nodes) #JB
-        #print("in this item: ") #JB
-        #print(item) #JB
-        nodes = [n.id for n in nodes]
-        for node in nodes:
-            print("node: ") #JB
-            print(node) #JB
-            uy = self.__results[self.__time]['node'][node]['uy'] #JB
-            nodes_uy.append(uy)
-            print(uy) #JB
-        if min(nodes_uy) == 0.0:
-            return ((max(nodes_uy))*(-1))
-        else:
-            return ((min(nodes_uy))*(-1))
-        #return (max(nodes_uy), mnin(nodes_uy))
-
-
     def get_emax(self, field, time=None, mode='avg'):
         """Returns the max results field value of selected elements at curent time.
 
