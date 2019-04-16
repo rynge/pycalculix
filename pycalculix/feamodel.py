@@ -1635,7 +1635,7 @@ class FeaModel(object):
         elif mesher == 'cgx':
             self.__mesh_cgx(size)
 
-    def __mesh_gmsh(self, size, meshmode, timeout=20):
+    def __mesh_gmsh(self, size, meshmode, timeout=1000):
         """Meshes all parts using the Gmsh mesher.
 
         Args:
@@ -1817,7 +1817,7 @@ class FeaModel(object):
         # read in the calculix mesh
         self.__read_inp(self.fname+'.inp')
 
-    def __mesh_cgx(self, size, meshmode, timeout=20):
+    def __mesh_cgx(self, size, meshmode, timeout=1000):
         """Meshes all parts using the Calculix cgx mesher.
 
         Args:
