@@ -831,7 +831,7 @@ class ResultsFile(object):
         Reports results for the current time.
         
         Args:
-        item (Point or SignLine): item that has x-direction displacements on its noes
+        item (Point or SignLine): item that has x-direction displacements on its nodes
         
         Returns:
         tuple: (uxmax, uxmin) max & min displacement in y-axis, displacement units
@@ -848,6 +848,37 @@ class ResultsFile(object):
             #print(ux)
         print(nodes_ux)
         return(nodes_ux)
+
+    def get_displ(self, item, direction):
+        """Returns the maximum displacement for a given point or line in the direction specified.
+
+        Reports results for the current time.
+
+        Args:
+        - item (Point or SignLine): item that has displacements on its nodes
+        - direction (string, 'x' or 'y'): direction of displacement to be queried
+
+        Returns:
+        array: list of all displacements of each node along the SignLine or Point
+        """
+        #(displMax, displMin) = (None, None) #vestigial
+        displNodes = []
+        nodes = item.nodes
+        nodes = [n.id for n in nodes]
+        if direction == 'x':
+            for node in nodes:
+                displacement = self.__results[self.__time]['node'][node]['ux']
+                displNodes.append(displacement)
+            return(displNodes)
+        elif direction == 'y':
+            for node in nodes:
+                displacement = self.__results[self.__time]['node'][node]['uy']
+                displNodes.append(displacement)
+            return(displNodes)
+        else:
+            print("must pass 'x' or 'y' for displacement direction")
+            break
+        
 
     def get_emax(self, field, time=None, mode='avg'):
         """Returns the max results field value of selected elements at curent time.
