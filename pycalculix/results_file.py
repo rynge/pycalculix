@@ -838,7 +838,7 @@ class ResultsFile(object):
         """
         (uxmax, uxmin) = (None, None)
         nodes_ux = []
-        nodes = item.notes
+        nodes = item.nodes
         nodes = [n.id for n in nodes]
         for node in nodes:
             #print("node: ")
