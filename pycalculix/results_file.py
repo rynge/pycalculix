@@ -824,7 +824,30 @@ class ResultsFile(object):
         else:
             return ((min(nodes_uy))*(-1))
         #return (max(nodes_uy), mnin(nodes_uy))
-
+        
+    def get_displ_ux(self, item): #JB
+        """Returns the maximum x-directon (auxetic/meiotic) displacement for a given point or line.
+        
+        Reports results for the current time.
+        
+        Args:
+        item (Point or SignLine): item that has x-direction displacements on its noes
+        
+        Returns:
+        tuple: (uxmax, uxmin) max & min displacement in y-axis, displacement units
+        """
+        (uxmax, uxmin) = (None, None)
+        nodes_ux = []
+        nodes = item.notes
+        nodes = [n.id for n in nodes]
+        for node in nodes:
+            #print("node: ")
+            #print(node)
+            ux = self.__results[self.__time]['node'][node]['ux']
+            nodes_ux.append(ux)
+            #print(ux)
+        print(nodes_ux)
+        return(nodes_ux)
 
     def get_emax(self, field, time=None, mode='avg'):
         """Returns the max results field value of selected elements at curent time.
