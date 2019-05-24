@@ -793,7 +793,7 @@ class ResultsFile(object):
         fzz = sum(fzz)
         return [fxx, fyy, fzz]
 
-
+"""
     def get_maxmin_uy(self, item):
         """Returns the maximum and minimum y-direction displacement for a given point or line.
 
@@ -848,6 +848,7 @@ class ResultsFile(object):
             #print(ux)
         print(nodes_ux)
         return(nodes_ux)
+"""
 
     def get_displ(self, item, direction):
         """Returns the maximum displacement for a given point or line in the direction specified.
