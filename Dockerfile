@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip3 install --upgrade pip && \
     python3 -mpip install -U numpy && \
     python3 -mpip install -U matplotlib && \
-    python3 -mpip install -U pycalculix && \
+    python3 -mpip install -U git+https://github.com/joeborrello/pycalculix.git && \
     pycalculix-add-feaprograms
     
 RUN apt-get clean && \
